@@ -35,3 +35,20 @@ Origins from
 
 Mu Li, Ziqi Liu, Alex Smola, and Yu-Xiang Wang.
 DiFacto — Distributed Factorization Machines. In WSDM, 2016
+
+## Build
+
+### 使用CMake构建（推荐）
+
+```bash
+# 创建编译目录
+mkdir -p build
+cd build
+
+# 配置和编译项目
+cmake ..
+make -j4
+
+# 运行示例
+./difacto task=train learner=sgd batch_size=100 data_in=/path/to/data V_dim=10
+```

@@ -10,7 +10,7 @@
 #include "difacto/base.h"
 #include "data/row_block.h"
 #include "data/parser.h"
-#include "data/strtonum.h"
+#include "dmlc/strtonum.h"
 namespace difacto {
 
 /**
@@ -33,9 +33,9 @@ class AdfeaParser : public dmlc::data::ParserImpl<feaid_t> {
   }
   bool ParseNext(
       std::vector<dmlc::data::RowBlockContainer<feaid_t> > *data) override {
-    using dmlc::data::isspace;
-    using dmlc::data::isdigit;
-    using dmlc::data::strtoull;
+    using dmlc::isspace;
+    using dmlc::isdigit;
+    using dmlc::strtoull;
 
     dmlc::InputSplit::Blob chunk;
 

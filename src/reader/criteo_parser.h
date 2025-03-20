@@ -13,7 +13,7 @@
 #include "difacto/base.h"
 #include "data/row_block.h"
 #include "data/parser.h"
-#include "data/strtonum.h"
+#include "dmlc/strtonum.h"
 namespace difacto {
 
 /**
