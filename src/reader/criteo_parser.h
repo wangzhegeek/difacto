@@ -6,9 +6,8 @@
 #ifndef DIFACTO_READER_CRITEO_PARSER_H_
 #define DIFACTO_READER_CRITEO_PARSER_H_
 #include <limits>
-#if DIFACTO_USE_CITY
-#include <city.h>
-#endif  // DIFACTO_USE_CITY
+#include <string>
+#include <functional>
 #include <vector>
 #include "difacto/base.h"
 #include "data/row_block.h"
@@ -93,12 +92,9 @@ class CriteoParser : public dmlc::data::ParserImpl<feaid_t> {
 
  private:
   inline feaid_t Hash(const char* p, size_t len) {
-#if DIFACTO_USE_CITY
-    return CityHash64(p, len);
-#else
-    LOG(FATAL) << "compile with USE_CITY=1";
-    return 0;
-#endif  // DIFACTO_USE_CITY
+    std::string str(p, len);
+    std::hash<std::string> hasher;
+    return hasher(str);
   }
 
   // implement strchr

@@ -73,5 +73,29 @@ add_executable(difacto_main src/main.cc)
 set_target_properties(difacto_main PROPERTIES OUTPUT_NAME "difacto")
 target_link_libraries(difacto_main difacto dmlc pslite ${CMAKE_THREAD_LIBS_INIT})
 
+# 添加测试目标
+file(GLOB_RECURSE TEST_SRCS
+  tests/cpp/main.cc
+  tests/cpp/spmv_test.cc
+  tests/cpp/spmm_test.cc
+  tests/cpp/spmt_test.cc
+  tests/cpp/compressed_row_block_test.cc
+  tests/cpp/find_position_test.cc
+  tests/cpp/localizer_test.cc
+  tests/cpp/kv_match_test.cc
+  tests/cpp/kv_union_test.cc
+  tests/cpp/sgd_learner_test.cc
+  tests/cpp/bcd_learner_test.cc
+  tests/cpp/lbfgs_learner_test.cc
+  tests/cpp/lbfgs_twoloop_test.cc
+  tests/cpp/batch_reader_test.cc
+  tests/cpp/fm_loss_test.cc
+  tests/cpp/logit_loss_delta_test.cc
+  tests/cpp/data_store_test.cc
+)
+
+add_executable(difacto_tests ${TEST_SRCS})
+target_link_libraries(difacto_tests difacto dmlc pslite gtest gtest_main pthread ${CMAKE_THREAD_LIBS_INIT})
+
 # 如果需要单元测试，在这里添加
 # add_subdirectory(tests) 
